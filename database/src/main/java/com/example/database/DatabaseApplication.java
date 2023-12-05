@@ -1,7 +1,5 @@
 package com.example.database;
 
-import javax.sql.DataSource;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +11,11 @@ import lombok.extern.java.Log;
 @Log
 public class DatabaseApplication implements CommandLineRunner {
 
-	private final DataSource datasource;
+	private JdbcTemplate jdbcTemplate;
 
-	public DatabaseApplication(DataSource datasource) {
-		this.datasource = datasource;
+	public DatabaseApplication(JdbcTemplate jdbcTemplate)
+	{
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	public static void main(String[] args) {
@@ -25,10 +24,10 @@ public class DatabaseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		JdbcTemplate jdbc = new JdbcTemplate(datasource);
-		//display all table in console
-		jdbc.queryForList("SELECT * FROM person").forEach(row -> log.info(row.toString()));
-
+		log.info("database"+jdbcTemplate.toString());
+		jdbcTemplate.execute("select 1");
 	}
+
+	
 
 }
