@@ -5,14 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
 public class Book {
 
     private String isbn;
+
     private String title;
+
     private Long authorId;
-    
+
 }

@@ -1,8 +1,12 @@
 package com.example.database.dao;
 
+import java.util.Optional;
+
 import com.example.database.domain.Author;
 
 public interface AuthorDao {
-    
-    public void create(Author author);
+    void create(Author author);
+
+    Optional<Author> findOne(long l);
+
 }
