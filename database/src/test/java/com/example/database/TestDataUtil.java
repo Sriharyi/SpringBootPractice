@@ -7,18 +7,34 @@ public final class TestDataUtil {
     private TestDataUtil(){
     }
 
-    public static Author createTestAuthor() {
+    public static Author createTestAuthorA() {
         return Author.builder()
                 .id(1L)
                 .name("Abigail Rose")
                 .age(80)
                 .build();
     }
+    
+    public static Author createTestAuthorB() {
+        return Author.builder()
+                .id(2L)
+                .name("Thomas Wayne")
+                .age(40)
+                .build();
+    }
 
-    public static Book createTestBook() {
+    public static Book createTestBookA() {
         return Book.builder()
                 .isbn("978-1-2345-6789-0")
                 .title("The Shadow in the Attic")
+                .authorId(1L)
+                .build();
+    }
+    
+    public static Book createTestBookB() {
+        return Book.builder()
+                .isbn("978-1-2345-6798-0")
+                .title("The Shadow in the Basement")
                 .authorId(1L)
                 .build();
     }

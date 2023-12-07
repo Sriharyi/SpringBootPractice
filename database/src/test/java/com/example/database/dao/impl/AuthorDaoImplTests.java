@@ -26,7 +26,7 @@ public class AuthorDaoImplTests {
 
     @Test
     public void testThatCreateAuthorGeneratesCorrectSql() {
-        Author author = TestDataUtil.createTestAuthor();
+        Author author = TestDataUtil.createTestAuthorA();
 
         underTest.create(author);
 
@@ -44,5 +44,12 @@ public class AuthorDaoImplTests {
                 ArgumentMatchers.<AuthorDaoImpl.AuthorRowMapper>any(),
                 eq(1L)
         );
+    }
+    
+    @Test
+    public void testThatCreateManyAuthorandGenerateCorrectSql()
+    {
+    	underTest.find();
+    	verify(jdbcTemplate).query(eq("SELECT id, name, age FROM authors"),ArgumentMatchers.<AuthorDaoImpl.AuthorRowMapper>any());
     }
 }
